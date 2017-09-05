@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as todosApi from './api';
-import './api.mock';
 
 describe('todos api', () => {
   beforeEach(() => {
