@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoListItem component renders checked when props.checked is false 1`] = `
+<div>
+  <span />
+  <input
+    type="checkbox"
+    value="false"
+  />
+  <button>
+    remove
+  </button>
+</div>
+`;
+
+exports[`TodoListItem component renders checked when props.checked is true 1`] = `
+<div>
+  <span />
+  <input
+    type="checkbox"
+    value="true"
+  />
+  <button>
+    remove
+  </button>
+</div>
+`;
+
+exports[`TodoListItem component renders title from props 1`] = `
+<div>
+  <span>
+    test title
+  </span>
+  <input
+    type="checkbox"
+  />
+  <button>
+    remove
+  </button>
+</div>
+`;

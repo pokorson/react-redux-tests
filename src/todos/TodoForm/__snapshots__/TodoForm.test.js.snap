@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoForm component renders component 1`] = `
+<form
+  className="todo-form"
+  onSubmit={[Function]}
+>
+  <div>
+    <label>
+      title:
+    </label>
+    <input
+      name="title"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    submit
+  </button>
+</form>
+`;
+
+exports[`TodoForm component renders title inside input 1`] = `
+<form
+  className="todo-form"
+  onSubmit={[Function]}
+>
+  <div>
+    <label>
+      title:
+    </label>
+    <input
+      name="title"
+      onChange={[Function]}
+      type="text"
+      value="title for state"
+    />
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    submit
+  </button>
+</form>
+`;

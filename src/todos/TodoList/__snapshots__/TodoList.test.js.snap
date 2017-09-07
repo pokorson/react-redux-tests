@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList component render TodoListItem list 1`] = `
+<div>
+  <TodoForm
+    onSubmit={[Function]}
+  />
+  <div>
+    <label>
+      only completed
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+      value={false}
+    />
+  </div>
+  <div
+    className="todos-list"
+  >
+    <TodoListItem
+      completed={false}
+      id={1}
+      onComplete={[Function]}
+      onRemove={[Function]}
+      title="test1"
+    />
+    <TodoListItem
+      completed={true}
+      id={2}
+      onComplete={[Function]}
+      onRemove={[Function]}
+      title="test2"
+    />
+    <TodoListItem
+      completed={false}
+      id={3}
+      onComplete={[Function]}
+      onRemove={[Function]}
+      title="test3"
+    />
+  </div>
+</div>
+`;
+
+exports[`TodoList component renders only completed todos when onlyCompleted is true 1`] = `
+<div>
+  <TodoForm
+    onSubmit={[Function]}
+  />
+  <div>
+    <label>
+      only completed
+    </label>
+    <input
+      onChange={[Function]}
+      type="checkbox"
+      value={true}
+    />
+  </div>
+  <div
+    className="todos-list"
+  >
+    <TodoListItem
+      completed={true}
+      id={2}
+      onComplete={[Function]}
+      onRemove={[Function]}
+      title="test2"
+    />
+  </div>
+</div>
+`;

@@ -1,28 +1,22 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
 import { shallow, render } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 describe('TodoListItem component', () => {
-  it('renders without erros', () => {
-    const component = shallow(<TodoListItem />);
-  });
-
-  it('renders title', () => {
-    const props = { title: 'test title' };
-    const component = render(<TodoListItem {...props} />);
-    expect(component.find('span').text()).toEqual(props.title);
+  it('renders title from props', () => {
+    const component = render(<TodoListItem title='test title' />);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('renders checked when props.checked is false', () => {
-    const props = { checked: false };
-    const component = render(<TodoListItem {...props} />);
-    expect(component.find('input').val()).toEqual('false');
+    const component = render(<TodoListItem checked={false} />);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('renders checked when props.checked is true', () => {
-    const props = { checked: true };
-    const component = render(<TodoListItem {...props} />);
-    expect(component.find('input').val()).toEqual('true');
+    const component = render(<TodoListItem checked={true} />);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('calls onComplete prop on checkbox change', () => {

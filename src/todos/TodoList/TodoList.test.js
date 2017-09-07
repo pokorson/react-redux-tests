@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import uuidv1 from 'uuid/v1';
+import toJson from 'enzyme-to-json';
 
 describe('TodoList component', () => {
   jest.mock('../api/api');
@@ -8,21 +9,21 @@ describe('TodoList component', () => {
   const TodoListItem = require('../TodoListItem').default;
 
   const todos = [
-    { id: uuidv1(), title: 'test1', completed: false },
-    { id: uuidv1(), title: 'test2', completed: true },
-    { id: uuidv1(), title: 'test3', completed: false },
+    { id: 1, title: 'test1', completed: false },
+    { id: 2, title: 'test2', completed: true },
+    { id: 3, title: 'test3', completed: false },
   ];
 
   it('render TodoListItem list', () => {
     const component = shallow(<TodoList />);
     component.setState({ todos: todos });
-    expect(component.find(TodoListItem)).toHaveLength(3);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('renders only completed todos when onlyCompleted is true', () => {
     const component = shallow(<TodoList />);
     component.setState({ todos: todos, onlyCompleted: true });
-    expect(component.find(TodoListItem)).toHaveLength(1);
+    expect(toJson(component)).toMatchSnapshot();
   });
 
   it('toggles onlyCompleted flag on checkbox click', () => {
@@ -61,12 +62,12 @@ describe('TodoList component', () => {
   it('calls addTodo action from API and updates todos', done => {
     const component = shallow(<TodoList />);
     component.setState({ todos });
-    const newTodo = { id: uuidv1(), title: 'new test', completed: false };
+    const newTodo = { id: 4, title: 'new test', completed: false };
     component
       .instance()
       .addTodo(newTodo)
       .then(() => {
-        expect(component.find(TodoListItem)).toHaveLength(4);
+        expect(component.state().todos).toHaveLength(4);
         expect(component.state().todos).toContain(newTodo);
         done();
       });
