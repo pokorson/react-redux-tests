@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoListItem from '../TodoListItem';
 import TodoForm from '../TodoForm';
-import todosApi from '../api';
+import * as todosApi from '../api';
 import './TodoList.css';
 
 class TodoList extends React.PureComponent {
@@ -21,7 +21,7 @@ class TodoList extends React.PureComponent {
   };
 
   addTodo = todo => {
-    todosApi.addTodo(todo).then(responseTodo => {
+    return todosApi.addTodo(todo).then(responseTodo => {
       this.setState({
         todos: [...this.state.todos, responseTodo],
       });
@@ -29,7 +29,7 @@ class TodoList extends React.PureComponent {
   };
 
   removeTodo = todoId => {
-    todosApi.removeTodo(todoId).then(() => {
+    return todosApi.removeTodo(todoId).then(() => {
       this.setState({
         todos: this.state.todos.filter(t => t.id !== todoId),
       });
@@ -37,7 +37,7 @@ class TodoList extends React.PureComponent {
   };
 
   completeTodo = todoId => {
-    todosApi.completeTodo(todoId).then(() => {
+    return todosApi.completeTodo(todoId).then(() => {
       this.setState({
         todos: this.state.todos.map(t => {
           if (t.id === todoId) {
@@ -56,7 +56,7 @@ class TodoList extends React.PureComponent {
       <div>
         <TodoForm onSubmit={this.addTodo} />
         <div>
-          <label>only uncompleted</label>
+          <label>only completed</label>
           <input type='checkbox' value={this.state.onlyCompleted} onChange={this.showOnlyCompleted} />
         </div>
         <div className='todos-list'>
